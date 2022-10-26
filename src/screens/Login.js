@@ -1,28 +1,42 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
+import { ListGroup, Button, Container, Row, Image } from "react-bootstrap";
 import { signInWithGoogle } from "../utilities/firebase";
 import { useProfile } from "../utilities/userProfile";
-import { useNavigate } from "react-router-dom";
+import "./Login.css";
 
 const Login = () => {
-    const navigate = useNavigate();
-    const [user, error, isLoading] = useProfile();
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-    if (error) {
-        console.log(error);
-        return <div>Error retrieving user profile...</div>;
-    }
-    if (user) {
-        navigate("/");
-    }
-    return (
-        <div>
-            <h1>Login</h1>
-            <Button onClick={signInWithGoogle} variant="primary">Sign in!</Button>
-        </div>
-    );
+  const navigate = useNavigate();
+  const [user, error, isLoading] = useProfile();
+
+  if (error) return <h1>Error loading user: {`${error}`}</h1>;
+  if (isLoading) return <h1>Loading user profile</h1>;
+
+  if (user) navigate("/");
+
+  return (
+    <Container className="login-body" fluid="true">
+      <ListGroup className="login-container m-2">
+        <ListGroup.Item className="login-card px-5 py-4">
+          <div className="login-title-div mt-4 mb-5 d-flex">
+            <Image className="login-image" src="favicon.png" />
+            <h2 className="ms-2">MeetNUFriends</h2>
+          </div>
+          <Row className="login-description-div">
+            <p className="mb-5">
+              Welcome to MeetNUFriends! An application that conects you with
+              other Northwestern students based on similar interests and tags.
+              Just log in with your Northwestern university email and start
+              meeting amazing people that share your same interests.
+            </p>
+            <Button className="login-button" onClick={signInWithGoogle}>
+              SIGN IN NOW
+            </Button>
+          </Row>
+        </ListGroup.Item>
+      </ListGroup>
+    </Container>
+  );
 };
 
 export default Login;

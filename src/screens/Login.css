@@ -1,0 +1,46 @@
+body {
+  background-color: lightgrey;
+}
+
+.login-image {
+  width: 40px;
+  height: 40px;
+}
+
+.login-title-div {
+  justify-content: center;
+}
+
+.login-description-div {
+  text-align: center;
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.login-card {
+  color: white;
+  border: 2px solid rgb(78, 42, 132);
+  background-color: #b19cd9;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.login-button {
+  text-align: center;
+  background-color: rgb(78, 42, 132);
+  border: 1px solid rgb(78, 42, 132);
+  color: white;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  color: rgb(78, 42, 132);
+  background-color: white;
+  border: 1px solid white;
+}
