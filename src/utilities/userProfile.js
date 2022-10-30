@@ -6,14 +6,17 @@ export const useProfile = () => {
   const [updateUser, result] = useDbUpdate("/users/");
   const [userInformation, error, isLoading] = useDbData(`/users/${user?.uid}`);
 
+  console.log(user);
+
   useEffect(() => {
     if (user && !error && !isLoading && !userInformation) {
       updateUser({
         [user.uid]: {
           displayName: user.displayName,
           email: user.email,
-          interests: userInformation.interests
+          interests: userInformation?userInformation.interests
             ? userInformation.interests
+            : null
             : null,
         },
       });
