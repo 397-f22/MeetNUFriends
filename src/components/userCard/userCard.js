@@ -1,13 +1,12 @@
-// import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Card, Badge } from 'react-bootstrap';
 
-function UserCard({name}) {
+function UserCard({ name, interests }) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>
-          Description
+          {interests ? interests.map((interest) => <Badge pill bg="primary">{interest}</Badge>) : null}
         </Card.Text>
       </Card.Body>
     </Card>
