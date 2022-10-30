@@ -23,7 +23,9 @@ const Home = () => {
   if (!currentUser) navigate("/login");
   if (!users) return <div> No Users </div>;
 
-  const currentUserInformation = Object.entries(users).filter(([id, user]) => id === currentUser.uid)[0][1];
+  const currentUserInformation = Object.entries(users).filter(
+    ([id, user]) => id === currentUser.uid
+  )[0][1];
 
   return (
     <div>
@@ -36,14 +38,27 @@ const Home = () => {
       </Button>
       <h3>My interests:</h3>
       <div>
-        {currentUserInformation.interests ? Object.values(currentUserInformation.interests).map(({ name }) => <Badge pill bg="primary">{name}</Badge>) : null}
+        {currentUserInformation.interests
+          ? Object.values(currentUserInformation.interests).map(({ name }) => (
+              <Badge key="name" pill bg="primary">
+                {name}
+              </Badge>
+            ))
+          : null}
       </div>
       <AddInterestModal show={show} handleClose={handleClose} />
       <ListGroup>
         {Object.entries(users).map(([id, user]) => {
           return (
             <ListGroup.Item key={id}>
-              <UserCard name={user.displayName} interests={user.interests ? Object.values(user.interests).map(({ name }) => name) : null} />
+              <UserCard
+                name={user.displayName}
+                interests={
+                  user.interests
+                    ? Object.values(user.interests).map(({ name }) => name)
+                    : null
+                }
+              />
             </ListGroup.Item>
           );
         })}

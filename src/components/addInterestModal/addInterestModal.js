@@ -13,7 +13,6 @@ const AddInterestModal = ({ show, handleClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //TODO: CHECK VALIDATION
     if (interest.length > 0) {
       const data = {
         name: interest,

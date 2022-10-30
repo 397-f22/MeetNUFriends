@@ -4,15 +4,21 @@ import { useAuthState, useDbData, useDbUpdate } from "./firebase";
 export const useProfile = () => {
   const [user] = useAuthState();
   const [updateUser, result] = useDbUpdate("/users/");
-  const [_, error, isLoading] = useDbData(`/users/${user?.uid || "guest"}`);
+  const [userInformation, error, isLoading] = useDbData(`/users/${user?.uid}`);
 
   useEffect(() => {
-    if (user && !error && !isLoading) {
+    if (user && !error && !isLoading && userInformation) {
       updateUser({
-        [user.uid]: { displayName: user.displayName, email: user.email },
+        [user.uid]: {
+          displayName: user.displayName,
+          email: user.email,
+          interests: userInformation.interests
+            ? userInformation.interests
+            : null,
+        },
       });
     }
-  }, [error, isLoading, user, updateUser]);
+  }, [error, isLoading, user, updateUser, userInformation]);
 
   return [user, error, isLoading];
 };
