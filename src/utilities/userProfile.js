@@ -7,7 +7,7 @@ export const useProfile = () => {
   const [userInformation, error, isLoading] = useDbData(`/users/${user?.uid}`);
 
   useEffect(() => {
-    if (user && !error && !isLoading && userInformation) {
+    if (user && !error && !isLoading && !userInformation) {
       updateUser({
         [user.uid]: {
           displayName: user.displayName,

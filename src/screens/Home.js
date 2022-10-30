@@ -23,17 +23,20 @@ const Home = () => {
   if (!currentUser) navigate("/login");
   if (!users) return <div> No Users </div>;
 
+  console.log(users);
   const currentUserInformation = Object.entries(users).filter(
     ([id, user]) => id === currentUser.uid
   )[0][1];
 
   const compareFunc = (user1, user2) => {
-    const interest1 = user1[1].interests ? Object.values(user1[1].interests) : null
-    const interest2 = user2[1].interests ? Object.values(user2[1].interests) : null
+    const interest1 = user1[1].interests ? Object.values(user1[1].interests) : []
+    const interest2 = user2[1].interests ? Object.values(user2[1].interests) : []
 
-    if (interest1 !== null && interest2!== null)
-    return interest1.filter(value => interest2.includes(value)).length;
-    else return 0
+    const curInterest = currentUserInformation.interests ? currentUserInformation.interests : []
+    const common1 = interest1.filter(value => curInterest.includes(value));
+    const common2 = interest2.filter(value => curInterest.includes(value));
+    
+    return common1.length - common2.length;
   }
 
   return (
