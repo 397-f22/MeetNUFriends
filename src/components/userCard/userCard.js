@@ -1,6 +1,7 @@
 import { Card, Badge } from "react-bootstrap";
 
-function UserCard({ name, interests }) {
+function UserCard({ name, interests, currentUserInterests }) {
+  
   return (
     <Card style={{ width: "18rem" }}>
       <Card.Body>
