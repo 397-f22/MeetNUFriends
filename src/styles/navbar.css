@@ -1,0 +1,24 @@
+.navbar-container {
+  background-color: rgb(78, 42, 132);
+}
+
+.navbar-title {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-title:hover {
+  color: lightgray;
+  font-weight: bold;
+}
+
+.navbar-signout-button {
+  border: 2px solid white;
+  color: white;
+  background-color: #b19cd9;
+}
+
+.navbar-signout-button:hover {
+  color: black;
+  background-color: white;
+}

@@ -1,0 +1,9 @@
+.interests-add-button {
+  text-align: center;
+  align-items: center;
+}
+
+.interests-list {
+  justify-content: center;
+  display: flex;
+}

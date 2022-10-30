@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { ListGroup, Button, Container, Row, Image } from "react-bootstrap";
 import { signInWithGoogle } from "../utilities/firebase";
 import { useProfile } from "../utilities/userProfile";
-import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();

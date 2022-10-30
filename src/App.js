@@ -5,6 +5,10 @@ import Login from "./screens/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+import "./styles/styles.css";
+import "./styles/navbar.css";
+import "./styles/userInterests.css";
+
 function App() {
   return (
     <div className="container">
