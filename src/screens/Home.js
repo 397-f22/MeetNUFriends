@@ -35,7 +35,6 @@ const Home = () => {
     const common2 = user2Interests.filter(value => curInterests.includes(value));
     return common2.length - common1.length;
   }
-
   return (
     <div>
       <h1>MeetNUFriends</h1>
@@ -57,7 +56,7 @@ const Home = () => {
       </div>
       <AddInterestModal show={show} handleClose={handleClose} />
       <ListGroup>
-        {Object.entries(users).sort((user1, user2) => compareFunc(user1, user2)).map(([id, user]) => {
+        {Object.entries(users).sort((user1, user2) => compareFunc(user1, user2)).filter(([id, user]) => id !== currentUser.uid).map(([id, user]) => {
           return (
             <ListGroup.Item key={id}>
               <UserCard
