@@ -8,8 +8,6 @@ import Menubar from "../components/Navbar/Menubar";
 import UserInterests from "../components/Interests/UserInterests";
 
 const Home = () => {
-  const navigate = useNavigate();
-
   const [currentUser, error, isLoading] = useProfile();
   const [show, setShow] = useState(false);
   const [users, errorUsers, isLoadingUsers] = useDbData("/users");
@@ -21,7 +19,7 @@ const Home = () => {
     return <h1>Error loading users data: {`${error}`}</h1>;
   if (isLoading || isLoadingUsers) return <h1>Loading users data...</h1>;
 
-  if (!currentUser) navigate("/login");
+  if (!currentUser) return;
   if (!users) return <div> No Users </div>;
 
   const currentUserInformation = Object.entries(users).filter(

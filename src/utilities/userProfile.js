@@ -3,24 +3,27 @@ import { useAuthState, useDbData, useDbUpdate } from "./firebase";
 
 export const useProfile = () => {
   const [user] = useAuthState();
-  const [updateUser, result] = useDbUpdate("/users/");
-  const [userInformation, error, isLoading] = useDbData(`/users/${user?.uid}`);
+  const [updateUser] = useDbUpdate("/users/");
+  const [users, error, isLoading] = useDbData("/users");
 
   useEffect(() => {
-    if (user && !error && !isLoading && !userInformation) {
+    // Check whether the user needs to be "registered or not" - if they need
+    // to be added to our list of users - if so, do so with a blank interests object
+    if (
+      user &&
+      !error &&
+      !isLoading &&
+      !Object.keys(users).includes(user.uid)
+    ) {
       updateUser({
         [user.uid]: {
           displayName: user.displayName,
           email: user.email,
-          interests: userInformation
-            ? userInformation.interests
-              ? userInformation.interests
-              : null
-            : null,
+          interests: {},
         },
       });
     }
-  }, [error, isLoading, user, updateUser, userInformation]);
+  }, [error, isLoading, user, updateUser, users]);
 
   return [user, error, isLoading];
 };
