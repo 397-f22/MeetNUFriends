@@ -19,22 +19,22 @@ const Home = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    // if the user is in the database, set the interests
-    if (currentUser && userInformation) {
-      setInterests(userInformation.interests);
-    }
-    // update the user to the database
-    if (currentUser && !error && !isLoading && !userInformation && interests) {
-      updateUser({
-        [currentUser.uid]: {
-          displayName: currentUser.displayName,
-          email: currentUser.email,
-          interests: interests,
-        },
-      });
-    }    
-  }, [currentUser, userInformation]);
+  // useEffect(() => {
+  //   // if the user is in the database, set the interests
+  //   if (currentUser && userInformation) {
+  //     setInterests(userInformation.interests);
+  //   }
+  //   // update the user to the database
+  //   if (currentUser && !error && !isLoading && !userInformation && interests) {
+  //     updateUser({
+  //       [currentUser.uid]: {
+  //         displayName: currentUser.displayName,
+  //         email: currentUser.email,
+  //         interests: interests,
+  //       },
+  //     });
+  //   }    
+  // }, [currentUser, userInformation]);
 
   if (error || errorUsers)
     return <h1>Error loading users data: {`${error}`}</h1>;
