@@ -7,8 +7,12 @@
 }
 
 .interests-add-button:hover {
-  background-color: #b19cd9;
-  border: 1.5px solid rgb(78, 42, 132);
+  background-color: rgb(78, 42, 132);
+  border: 1.5px solid white;
+  transform: scale(1.2);
+  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12),
+    0 8px 32px -8px hsla(0, 0%, 0%, 0.14),
+    0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
 }
 
 .interests-list {
@@ -22,4 +26,12 @@
   opacity: 0.8;
   font-size: 22px;
   color: white;
+}
+
+.interests-badges:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  box-shadow: 0 13px 40px -5px hsla(240, 30.1%, 28%, 0.12),
+    0 8px 32px -8px hsla(0, 0%, 0%, 0.14),
+    0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
 }

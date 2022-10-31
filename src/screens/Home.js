@@ -58,9 +58,10 @@ const Home = () => {
           handleClose={handleClose}
           handleShow={handleShow}
         />
-        <ListGroup>
+        <ListGroup variant="flush">
           {Object.entries(users)
             .sort((user1, user2) => compareFunc(user1, user2))
+            .filter(([id, user]) => id !== currentUser.uid)
             .map(([id, user]) => {
               return (
                 <ListGroup.Item key={id}>

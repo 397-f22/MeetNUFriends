@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
+import { Button, Modal, Form } from "react-bootstrap";
 import { useProfile } from "../../utilities/userProfile";
 import { useDbUpdate } from "../../utilities/firebase";
 

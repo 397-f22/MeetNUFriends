@@ -9,6 +9,7 @@ import { useProfile } from "./utilities/userProfile";
 import "./styles/styles.css";
 import "./styles/navbar.css";
 import "./styles/userInterests.css";
+import "./styles/userCard.css";
 
 function App() {
   const [user] = useProfile();
@@ -16,8 +17,14 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={user ? <Home /> : <Navigate replace to="/login" />} />
-          <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
+          <Route
+            path="/"
+            element={user ? <Home /> : <Navigate replace to="/login" />}
+          />
+          <Route
+            path="/login"
+            element={user ? <Navigate replace to="/" /> : <Login />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
