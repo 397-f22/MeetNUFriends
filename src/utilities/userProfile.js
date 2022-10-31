@@ -14,7 +14,7 @@ export const useProfile = () => {
         [user.uid]: {
           displayName: user.displayName,
           email: user.email,
-          interests: userInformation?userInformation.interests
+          interests: userInformation ? userInformation.interests
             ? userInformation.interests
             : null
             : null,
