@@ -16,7 +16,7 @@ const UserInterests = ({
           {currentUserInformation.interests
             ? Object.values(currentUserInformation.interests).map(
                 ({ name }) => (
-                  <Badge className="interests-badges" key="name" bg="info">
+                  <Badge className="interests-badges" key={name} bg="info">
                     {name}
                   </Badge>
                 )
