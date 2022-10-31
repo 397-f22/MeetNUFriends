@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -6,24 +6,16 @@ import Form from "react-bootstrap/Form";
 import { useProfile } from "../../utilities/userProfile";
 import { useDbUpdate } from "../../utilities/firebase";
 
-const AddInterestModal = ({ show, handleClose, interest, setInterest }) => {
-  const [user,userInformation, error, isLoading] = useProfile();
+const AddInterestModal = ({ show, handleClose }) => {
+  const [user, error, isLoading] = useProfile();
   const [updateData, result] = useDbUpdate("/");
-  // const [interest, setInterest] = useState();
+  const [interest, setInterest] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let content = document.getElementById("interestName").value;
-    if (content.length > 0) {
-      // if content is not empty, 1. update the interest in the state, 2. update the interest in the database
-      setInterest({
-        ...interest,
-        [uuidv4()]: {
-          name: content,
-        },
-      });
+    if (interest.length > 0) {
       const data = {
-        name: content,
+        name: interest,
       };
       updateData({ ["/users/" + user.uid + "/interests/" + uuidv4()]: data });
     }
@@ -41,6 +33,7 @@ const AddInterestModal = ({ show, handleClose, interest, setInterest }) => {
           <Form.Control
             type="text"
             id="interestName"
+            onChange={(e) => setInterest(e.target.value)}
           />
           <Form.Text muted>Enter the name of your interest</Form.Text>
         </Form>
