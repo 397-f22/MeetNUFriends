@@ -2,19 +2,39 @@ import React, { useState } from "react";
 import { Button, ListGroup, Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../utilities/userProfile";
-import { signOut, useDbData } from "../utilities/firebase";
+import { signOut, useDbData, useDbUpdate } from "../utilities/firebase";
 import AddInterestModal from "../components/addInterestModal/addInterestModal";
 import UserCard from "../components/userCard/userCard";
+import { useEffect } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
 
-  const [currentUser, error, isLoading] = useProfile();
+  const [currentUser,userInformation, error, isLoading] = useProfile();
   const [show, setShow] = useState(false);
   const [users, errorUsers, isLoadingUsers] = useDbData("/users");
+  const [interests, setInterests] = useState();
+  const [updateUser, result] = useDbUpdate("/users/");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // useEffect(() => {
+  //   // if the user is in the database, set the interests
+  //   if (currentUser && userInformation) {
+  //     setInterests(userInformation.interests);
+  //   }
+  //   // update the user to the database
+  //   if (currentUser && !error && !isLoading && !userInformation && interests) {
+  //     updateUser({
+  //       [currentUser.uid]: {
+  //         displayName: currentUser.displayName,
+  //         email: currentUser.email,
+  //         interests: interests,
+  //       },
+  //     });
+  //   }    
+  // }, [currentUser, userInformation]);
 
   if (error || errorUsers)
     return <h1>Error loading users data: {`${error}`}</h1>;
@@ -23,9 +43,11 @@ const Home = () => {
   if (!currentUser) navigate("/login");
   if (!users) return <div> No Users </div>;
 
-  const currentUserInformation = Object.entries(users).filter(
+  const currentUserInfo = Object.entries(users).filter(
     ([id, user]) => id === currentUser.uid
-  )[0][1];
+  );
+
+  const currentUserInformation = currentUserInfo?.[0]?.[1];
 
   const compareFunc = (user1, user2) => {
     const user1Interests = user1[1].interests ? Object.values(user1[1].interests).map(interest => interest.name) : []
@@ -54,7 +76,7 @@ const Home = () => {
           ))
           : null}
       </div>
-      <AddInterestModal show={show} handleClose={handleClose} />
+      <AddInterestModal show={show} interest={interests} setInterest={setInterests} handleClose={handleClose} />
       <ListGroup>
         {Object.entries(users).sort((user1, user2) => compareFunc(user1, user2)).filter(([id, user]) => id !== currentUser.uid).map(([id, user]) => {
           return (
