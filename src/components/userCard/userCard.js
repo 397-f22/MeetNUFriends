@@ -6,10 +6,10 @@ function UserCard({ name, interests, currentUserInterests }) {
       <Card.Body>
         <Container>
           <Row>
-            <Col xs={3} md={3}>
+            <Col xs={3} md={1}>
               <Image fluid roundedCircle width="50" src="/user.png" />
             </Col>
-            <Col xs={8} md={8} className="my-auto">
+            <Col xs={8} md={10} className="my-auto">
               <Card.Title className="my-auto mx-auto">{name}</Card.Title>
             </Col>
           </Row>

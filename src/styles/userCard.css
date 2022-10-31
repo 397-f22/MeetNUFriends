@@ -14,8 +14,9 @@
 }
 
 .user-interests {
-  font-size: 15px;
-  margin-left: 5px;
+  font-size: 14px;
+  margin-right: 10px;
+  opacity: 0.7;
 }
 
 .user-interests-container {

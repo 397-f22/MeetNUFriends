@@ -17,6 +17,7 @@ const AddInterestModal = ({ show, handleClose }) => {
       };
       updateData({ ["/users/" + user.uid + "/interests/" + uuidv4()]: data });
     }
+
     handleClose();
   };
 
