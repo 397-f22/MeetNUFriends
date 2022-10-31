@@ -26,6 +26,7 @@ const Home = () => {
 
   // change
   // change
+  // change
 
   const compareFunc = (user1, user2) => {
     const user1Interests = user1[1].interests ? Object.values(user1[1].interests).map(interest => interest.name) : []
