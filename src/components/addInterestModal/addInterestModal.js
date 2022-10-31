@@ -7,8 +7,8 @@ import { useProfile } from "../../utilities/userProfile";
 import { useDbUpdate } from "../../utilities/firebase";
 
 const AddInterestModal = ({ show, handleClose }) => {
-  const [user, error, isLoading] = useProfile();
-  const [updateData, result] = useDbUpdate("/");
+  const [user] = useProfile();
+  const [updateData] = useDbUpdate("/");
   const [interest, setInterest] = useState();
 
   const handleSubmit = (e) => {

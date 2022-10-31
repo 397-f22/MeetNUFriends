@@ -24,22 +24,28 @@ const database = getDatabase(firebase);
 export const useDbData = (path) => {
   const [data, setData] = useState();
   const [error, setError] = useState(null);
+  // Keep track of whether data from the database is being loaded or not
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(
-    () =>
+    () => {
+      setIsLoading(true);
       onValue(
         ref(database, path),
         (snapshot) => {
           setData(snapshot.val());
+          setIsLoading(false);
         },
         (error) => {
           setError(error);
+          setIsLoading(false);
         }
-      ),
+      )
+    },
     [path]
   );
 
-  return [data, error];
+  return [data, error, isLoading];
 };
 
 const makeResult = (error) => {

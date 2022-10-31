@@ -1,18 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { ListGroup, Button, Container, Row, Image } from "react-bootstrap";
 import { signInWithGoogle } from "../utilities/firebase";
 import { useProfile } from "../utilities/userProfile";
 import "./Login.css";
 
 const Login = () => {
-  const navigate = useNavigate();
-  const [user, error, isLoading] = useProfile();
+  const [_, error, isLoading] = useProfile();
 
   if (error) return <h1>Error loading user: {`${error}`}</h1>;
   if (isLoading) return <h1>Loading user profile</h1>;
-
-  if (user) navigate("/");
 
   return (
     <Container className="login-body" fluid="true">
