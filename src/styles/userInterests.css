@@ -1,9 +1,25 @@
 .interests-add-button {
   text-align: center;
   align-items: center;
+  margin-left: 5px;
+  background-color: rgb(78, 42, 132);
+  border: 1.5px solid white;
+}
+
+.interests-add-button:hover {
+  background-color: #b19cd9;
+  border: 1.5px solid rgb(78, 42, 132);
 }
 
 .interests-list {
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   display: flex;
+}
+
+.interests-badges {
+  margin: 5px;
+  opacity: 0.8;
+  font-size: 22px;
+  color: white;
 }

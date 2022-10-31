@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ListGroup } from "react-bootstrap";
+import { ListGroup, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../utilities/userProfile";
 import { useDbData } from "../utilities/firebase";
@@ -51,31 +51,33 @@ const Home = () => {
 
   return (
     <div>
-      <Menubar />
-      <UserInterests
-        currentUserInformation={currentUserInformation}
-        show={show}
-        handleClose={handleClose}
-        handleShow={handleShow}
-      />
-      <ListGroup>
-        {Object.entries(users)
-          .sort((user1, user2) => compareFunc(user1, user2))
-          .map(([id, user]) => {
-            return (
-              <ListGroup.Item key={id}>
-                <UserCard
-                  name={user.displayName}
-                  interests={
-                    user.interests
-                      ? Object.values(user.interests).map(({ name }) => name)
-                      : null
-                  }
-                />
-              </ListGroup.Item>
-            );
-          })}
-      </ListGroup>
+      <Menubar user={currentUser} />
+      <Container className="container">
+        <UserInterests
+          currentUserInformation={currentUserInformation}
+          show={show}
+          handleClose={handleClose}
+          handleShow={handleShow}
+        />
+        <ListGroup>
+          {Object.entries(users)
+            .sort((user1, user2) => compareFunc(user1, user2))
+            .map(([id, user]) => {
+              return (
+                <ListGroup.Item key={id}>
+                  <UserCard
+                    name={user.displayName}
+                    interests={
+                      user.interests
+                        ? Object.values(user.interests).map(({ name }) => name)
+                        : null
+                    }
+                  />
+                </ListGroup.Item>
+              );
+            })}
+        </ListGroup>
+      </Container>
     </div>
   );
 };

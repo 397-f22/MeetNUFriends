@@ -11,7 +11,7 @@ import "./styles/userInterests.css";
 
 function App() {
   return (
-    <div className="container">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

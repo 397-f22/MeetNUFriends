@@ -2,9 +2,19 @@
   background-color: rgb(78, 42, 132);
 }
 
+.navbar-content {
+  align-items: center;
+  display: flex;
+}
+
 .navbar-title {
   color: white;
   font-weight: bold;
+}
+
+.navbar-username {
+  right: 0;
+  color: white;
 }
 
 .navbar-title:hover {
@@ -13,6 +23,7 @@
 }
 
 .navbar-signout-button {
+  margin-left: 10px;
   border: 2px solid white;
   color: white;
   background-color: #b19cd9;
