@@ -4,12 +4,28 @@ import { ListGroup, Button, Container, Row, Image } from "react-bootstrap";
 import { signInWithGoogle , useDbUpdate} from "../utilities/firebase";
 import { useProfile } from "../utilities/userProfile";
 import "./Login.css";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
   const [user,userInformation, error, isLoading] = useProfile();
   const [updateUser, result] = useDbUpdate("/users/");
 
+  useEffect(() => {
+    if (user) {
+      console.log("sign in", user);
+      // check if user is in database, if not add them
+      if (!userInformation) {
+        updateUser({
+          [user.uid]: {
+            displayName: user.displayName,
+            email: user.email,
+            interests: null,
+          },
+        });
+      }
+    }
+  }, [user])
 
   if (error) return <h1>Error loading user: {`${error}`}</h1>;
   if (isLoading) return <h1>Loading user profile</h1>;
@@ -17,16 +33,6 @@ const Login = () => {
   if (user) navigate("/");
 
   const signIn = () => {
-    // check if user is in database, if not add them
-    if (user && !userInformation) {
-      updateUser({
-        [user.uid]: {
-          displayName: user.displayName,
-          email: user.email,
-          interests: null,
-        },
-      });
-    }
     signInWithGoogle();
   };
 
