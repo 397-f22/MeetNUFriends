@@ -29,20 +29,24 @@ const Home = () => {
   )[0][1];
 
   const compareFunc = (user1, user2) => {
-    const interest1 = user1[1].interests
-      ? Object.values(user1[1].interests)
+    const user1Interests = user1[1].interests
+      ? Object.values(user1[1].interests).map((interest) => interest.name)
       : [];
-    const interest2 = user2[1].interests
-      ? Object.values(user2[1].interests)
+    const user2Interests = user2[1].interests
+      ? Object.values(user2[1].interests).map((interest) => interest.name)
       : [];
-
-    const curInterest = currentUserInformation.interests
-      ? currentUserInformation.interests
+    const curInterests = currentUserInformation.interests
+      ? Object.values(currentUserInformation.interests).map(
+          (interest) => interest.name
+        )
       : [];
-    const common1 = interest1.filter((value) => curInterest.includes(value));
-    const common2 = interest2.filter((value) => curInterest.includes(value));
-
-    return common1.length - common2.length;
+    const common1 = user1Interests.filter((value) =>
+      curInterests.includes(value)
+    );
+    const common2 = user2Interests.filter((value) =>
+      curInterests.includes(value)
+    );
+    return common2.length - common1.length;
   };
 
   return (
