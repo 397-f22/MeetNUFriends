@@ -19,7 +19,7 @@ function UserCard({ name, interests, currentUserInterests }) {
           <div>
             User description goes here. In the future, each user will have the
             ability to write a short description about themselves to let other
-            students know more about themselves.
+            students know more about themselves
           </div>
           <div className="user-interests-container">
             {interests ? (
