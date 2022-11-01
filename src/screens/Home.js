@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { ListGroup, Container } from "react-bootstrap";
 import { useProfile } from "../utilities/userProfile";
 import { useDbData } from "../utilities/firebase";
-import UserCard from "../components/UserCard/UserCard";
+import UserCard from "../components/userCard/userCard";
 import Menubar from "../components/Navbar/Menubar";
 import UserInterests from "../components/Interests/UserInterests";
+import {stringSimilarity} from "../utilities/calculate";
 
 const Home = () => {
   const [currentUser, error, isLoading] = useProfile();
@@ -25,26 +26,39 @@ const Home = () => {
     ([id, user]) => id === currentUser.uid
   )[0][1];
 
-  const compareFunc = (user1, user2) => {
-    const user1Interests = user1[1].interests
-      ? Object.values(user1[1].interests).map((interest) => interest.name)
-      : [];
-    const user2Interests = user2[1].interests
-      ? Object.values(user2[1].interests).map((interest) => interest.name)
-      : [];
-    const curInterests = currentUserInformation.interests
-      ? Object.values(currentUserInformation.interests).map(
-          (interest) => interest.name
-        )
-      : [];
-    const common1 = user1Interests.filter((value) =>
-      curInterests.includes(value)
-    );
-    const common2 = user2Interests.filter((value) =>
-      curInterests.includes(value)
-    );
-    return common2.length - common1.length;
+  // create a set of all the interests of the other users
+  const allInterests = new Set();
+  Object.entries(users).forEach(([id, user]) => {
+    if (id !== currentUser.uid && user.interests) {
+      Object.entries(user.interests).forEach(([id, interst]) => {
+        allInterests.add(interst.name);
+      });
+    }
+  });
+
+  // calculate the similarity list between the interests of the current user and all other users
+  const calculateSimilarity = (currentUser, users) => {
+    const similarityList = [];
+    Object.entries(users).forEach(([id, user]) => {
+      if (user!==currentUser && user.interests) {
+        let similarity = 0;
+        Object.entries(user.interests).forEach(([id, interest]) => {  
+          Object.entries(currentUser.interests).forEach(([id, currentUserInterest]) => {
+            similarity += stringSimilarity(interest.name, currentUserInterest.name);
+          });
+        });
+        similarityList.push([id, user, similarity]);
+      }
+      if (!user.interests) {
+        similarityList.push([id, user, 0]);
+      }
+    });
+    // sort the list by the similarity
+    similarityList.sort((a, b) => b[2] - a[2]);
+    return similarityList;
   };
+
+  // console.log(calculateSimilarity(currentUserInformation, users));
 
   return (
     <div>
@@ -55,12 +69,10 @@ const Home = () => {
           show={show}
           handleClose={handleClose}
           handleShow={handleShow}
+          allInterests={allInterests}
         />
         <ListGroup variant="flush">
-          {Object.entries(users)
-            .sort((user1, user2) => compareFunc(user1, user2))
-            .filter(([id, user]) => id !== currentUser.uid)
-            .map(([id, user]) => {
+          { calculateSimilarity(currentUserInformation, users).map(([id, user, similarity]) => {
               return (
                 <ListGroup.Item key={id}>
                   <UserCard

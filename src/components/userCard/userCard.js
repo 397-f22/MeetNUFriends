@@ -15,8 +15,8 @@ function UserCard({ name, interests, currentUserInterests }) {
           </Row>
         </Container>
 
-        <Card.Text className="mt-1">
-          <div>
+        {/* <Card.Text className="mt-1"> */}
+          <div className="mt-1">
             User description goes here. In the future, each user will have the
             ability to write a short description about themselves to let other
             students know more about themselves.
@@ -37,7 +37,7 @@ function UserCard({ name, interests, currentUserInterests }) {
               <p className="user-interests-warning">No interests added yet</p>
             )}
           </div>
-        </Card.Text>
+        {/* </Card.Text> */}
       </Card.Body>
     </Card>
   );
