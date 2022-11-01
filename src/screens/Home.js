@@ -42,10 +42,12 @@ const Home = () => {
     Object.entries(users).forEach(([id, user]) => {
       if (user!==currentUser && user.interests) {
         let similarity = 0;
-        Object.entries(user.interests).forEach(([id, interest]) => {  
-          Object.entries(currentUser.interests).forEach(([id, currentUserInterest]) => {
-            similarity += stringSimilarity(interest.name, currentUserInterest.name);
-          });
+        Object.entries(user.interests).forEach(([id, interest]) => {
+          if (currentUser.interests) {  
+            Object.entries(currentUser.interests).forEach(([id, currentUserInterest]) => {
+              similarity += stringSimilarity(interest.name, currentUserInterest.name);
+            });
+          }
         });
         similarityList.push([id, user, similarity]);
       }
@@ -72,7 +74,7 @@ const Home = () => {
           allInterests={allInterests}
         />
         <ListGroup variant="flush">
-          { calculateSimilarity(currentUserInformation, users).map(([id, user, similarity]) => {
+          { calculateSimilarity(currentUserInformation, users).filter(([id, user, similarity]) => user !== currentUserInformation).map(([id, user, similarity]) => {
               return (
                 <ListGroup.Item key={id}>
                   <UserCard
