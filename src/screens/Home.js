@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { ListGroup, Container } from "react-bootstrap";
 import { useProfile } from "../utilities/userProfile";
 import { useDbData } from "../utilities/firebase";
-import UserCard from "../components/userCard/userCard";
+import UserCard from "../components/UserCard/UserCard";
 import Menubar from "../components/Navbar/Menubar";
 import UserInterests from "../components/Interests/UserInterests";
-import {stringSimilarity} from "../utilities/calculate";
+import { stringSimilarity } from "../utilities/calculate";
 
 const Home = () => {
   const [currentUser, error, isLoading] = useProfile();
@@ -40,13 +40,18 @@ const Home = () => {
   const calculateSimilarity = (currentUser, users) => {
     const similarityList = [];
     Object.entries(users).forEach(([id, user]) => {
-      if (user!==currentUser && user.interests) {
+      if (user !== currentUser && user.interests) {
         let similarity = 0;
         Object.entries(user.interests).forEach(([id, interest]) => {
-          if (currentUser.interests) {  
-            Object.entries(currentUser.interests).forEach(([id, currentUserInterest]) => {
-              similarity += stringSimilarity(interest.name, currentUserInterest.name);
-            });
+          if (currentUser.interests) {
+            Object.entries(currentUser.interests).forEach(
+              ([id, currentUserInterest]) => {
+                similarity += stringSimilarity(
+                  interest.name,
+                  currentUserInterest.name
+                );
+              }
+            );
           }
         });
         similarityList.push([id, user, similarity]);
@@ -74,7 +79,9 @@ const Home = () => {
           allInterests={allInterests}
         />
         <ListGroup variant="flush">
-          { calculateSimilarity(currentUserInformation, users).filter(([id, user, similarity]) => user !== currentUserInformation).map(([id, user, similarity]) => {
+          {calculateSimilarity(currentUserInformation, users)
+            .filter(([id, user, similarity]) => user !== currentUserInformation)
+            .map(([id, user, similarity]) => {
               return (
                 <ListGroup.Item key={id}>
                   <UserCard

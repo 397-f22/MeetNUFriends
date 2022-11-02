@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge, Button } from "react-bootstrap";
-import AddInterestModal from "../addInterestModal/addInterestModal";
+import AddInterestModal from "../AddInterestModal/AddInterestModal";
 
 const UserInterests = ({
   currentUserInformation,
@@ -30,7 +30,11 @@ const UserInterests = ({
           </Button>
         </div>
       </div>
-      <AddInterestModal show={show} handleClose={handleClose} interests={allInterests} />
+      <AddInterestModal
+        show={show}
+        handleClose={handleClose}
+        interests={allInterests}
+      />
     </div>
   );
 };
