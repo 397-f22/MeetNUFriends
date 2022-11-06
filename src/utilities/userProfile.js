@@ -20,6 +20,7 @@ export const useProfile = () => {
           displayName: user.displayName,
           email: user.email,
           interests: {},
+          description: ""
         },
       });
     }
