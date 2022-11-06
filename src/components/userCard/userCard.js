@@ -1,6 +1,6 @@
 import { Card, Badge, Image, Container, Row, Col } from "react-bootstrap";
 
-function UserCard({ description, name, interests, currentUserInterests }) {
+function UserCard({ description, name, email, interests, currentUserInterests }) {
   return (
     <Card>
       <Card.Body>
@@ -14,11 +14,11 @@ function UserCard({ description, name, interests, currentUserInterests }) {
             </Col>
           </Row>
         </Container>
-
-        {/* <Card.Text className="mt-1"> */}
         <div className="mt-1">
           {description ?? "User has no description"}
         </div>
+      <a href={`mailto:${email}`}  style={{textDecoration:"none"}}> {email} </a>
+
         <div className="user-interests-container">
           {interests ? (
             interests.map((interest) => (
