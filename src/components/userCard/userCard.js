@@ -1,6 +1,6 @@
 import { Card, Badge, Image, Container, Row, Col } from "react-bootstrap";
 
-function UserCard({ name, interests, currentUserInterests }) {
+function UserCard({ description, name, interests, currentUserInterests }) {
   return (
     <Card>
       <Card.Body>
@@ -17,9 +17,7 @@ function UserCard({ name, interests, currentUserInterests }) {
 
         {/* <Card.Text className="mt-1"> */}
         <div className="mt-1">
-          User description goes here. In the future, each user will have the
-          ability to write a short description about themselves to let other
-          students know more about themselves
+          {description ?? "User has no description"}
         </div>
         <div className="user-interests-container">
           {interests ? (

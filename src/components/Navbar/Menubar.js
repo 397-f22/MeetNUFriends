@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { signOut } from "../../utilities/firebase";
 
@@ -8,7 +8,13 @@ const SignOutButton = () => (
   </button>
 );
 
-const Menubar = ({ user }) => {
+const ProfileButton = ({ openProfileModal }) => (
+  <button className="ml-5 p-2 w-10 btn navbar-signout-button" onClick={openProfileModal}>
+    Profile
+  </button>
+)
+
+const Menubar = ({ user, openProfileModal }) => {
   return (
     <Navbar className="navbar-container p-3">
       <Container>
@@ -21,6 +27,7 @@ const Menubar = ({ user }) => {
           {user && (
             <Nav className="navbar-username">Welcome! {user.displayName}</Nav>
           )}
+          <ProfileButton openProfileModal={openProfileModal} />
           <SignOutButton />
         </div>
       </Container>

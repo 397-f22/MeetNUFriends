@@ -1,0 +1,335 @@
+commit 115bdbefd5bbde12327fecba9a980c56117e8ced
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Tue Nov 1 19:35:04 2022 -0500
+
+    Fixed capitalize errors on files
+
+M	src/components/Interests/UserInterests.js
+M	src/components/addInterestModal/addInterestModal.js
+M	src/components/userCard/userCard.js
+M	src/screens/Home.js
+
+commit 9647fab0edc141903952f9cd6859ec632c740bb1
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Tue Nov 1 18:12:53 2022 -0500
+
+    Added minor things to code
+
+M	src/components/addInterestModal/addInterestModal.js
+M	src/components/userCard/userCard.js
+
+commit 656860d4ef4614119d93a12b9aa3ccfbda65ae42
+Author: Ping <pinghe2022@u.northwestern.edu>
+Date:   Tue Nov 1 01:17:39 2022 -0500
+
+    fixed bug
+
+M	src/screens/Home.js
+
+commit ee36ad5c366069aeb664b57cc2b0dbb74c779f67
+Author: Ping <pinghe2022@u.northwestern.edu>
+Date:   Tue Nov 1 01:02:43 2022 -0500
+
+    Fuzzy Matching and Tag Cloud
+
+M	package-lock.json
+M	package.json
+M	src/components/Interests/UserInterests.js
+M	src/components/addInterestModal/addInterestModal.js
+M	src/components/userCard/userCard.js
+M	src/screens/Home.js
+A	src/utilities/calculate.js
+
+commit e3b94e7a831b7e077877592a378e607eaa52f9a8
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Mon Oct 31 14:22:26 2022 -0500
+
+    Added styles to interests badges
+
+M	src/components/addInterestModal/addInterestModal.js
+M	src/components/userCard/userCard.js
+M	src/screens/Home.js
+M	src/styles/userCard.css
+
+commit 282c553caaf76b901a166ee52db955e9a333b411
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Mon Oct 31 14:13:39 2022 -0500
+
+    Finished styling for user card grid
+
+A	public/user.png
+M	src/App.js
+M	src/components/addInterestModal/addInterestModal.js
+D	src/components/userCard/userCard.css
+M	src/components/userCard/userCard.js
+M	src/screens/Home.js
+A	src/styles/userCard.css
+M	src/styles/userInterests.css
+
+commit 09b6110c54ccaadeb7aa52900c8a9beff3a2317c
+Author: Ping <pinghe2022@u.northwestern.edu>
+Date:   Mon Oct 31 13:03:11 2022 -0500
+
+    card styling
+
+A	src/components/userCard/userCard.css
+M	src/components/userCard/userCard.js
+
+commit e78b65e4d31c08e6f94cf0a8bf4adc87514110f6
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Mon Oct 31 11:25:40 2022 -0500
+
+    Added navigation to login screen when logged out
+
+M	src/components/Interests/UserInterests.js
+M	src/screens/Home.js
+
+commit 38188b31db1f6b498fa7abf69b584139f55a61db
+Author: derrickrosefan <114096803+derrickrosefan@users.noreply.github.com>
+Date:   Mon Oct 31 00:51:25 2022 -0500
+
+    fix add interest workflow
+
+M	src/App.js
+M	src/components/addInterestModal/addInterestModal.js
+M	src/screens/Home.js
+M	src/screens/Login.js
+M	src/utilities/firebase.js
+M	src/utilities/userProfile.js
+
+commit d1011bd4b72a2352a65ec4dd9d83b3b04208cd01
+Author: derrickrosefan <114096803+derrickrosefan@users.noreply.github.com>
+Date:   Mon Oct 31 00:07:29 2022 -0500
+
+    Revert "Fixed bug"
+
+M	src/components/addInterestModal/addInterestModal.js
+M	src/screens/Home.js
+M	src/screens/Login.js
+M	src/utilities/userProfile.js
+
+commit e7b1a1b070071552403032f4d07513ba5b10796c
+Author: Ping <pinghe2022@u.northwestern.edu>
+Date:   Mon Oct 31 00:03:44 2022 -0500
+
+    fix
+
+M	src/screens/Login.js
+
+commit 555667e6194e6cc5cff81c26fc284add1615e441
+Author: Ping <pinghe2022@u.northwestern.edu>
+Date:   Sun Oct 30 23:53:17 2022 -0500
+
+    removed unnecessary useEffect
+
+M	src/screens/Home.js
+
+commit a77df88a83907e91fe15285d37f37b2cadbca252
+Author: Ping <pinghe2022@u.northwestern.edu>
+Date:   Sun Oct 30 23:49:13 2022 -0500
+
+    Fixed bug
+
+M	src/components/addInterestModal/addInterestModal.js
+M	src/screens/Home.js
+M	src/screens/Login.js
+M	src/utilities/userProfile.js
+
+commit e565d419efb69f167dc0e3fb0e6a89608ac438d3
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Sun Oct 30 23:16:27 2022 -0500
+
+    Finished styles for personal interests header
+
+M	src/App.js
+M	src/components/Interests/UserInterests.js
+M	src/components/Navbar/Menubar.js
+M	src/screens/Home.js
+M	src/styles/navbar.css
+M	src/styles/userInterests.css
+
+commit a1e8b16e5ef0c4ecb6f8f6009a03783124eb3882
+Author: derrickrosefan <114096803+derrickrosefan@users.noreply.github.com>
+Date:   Sun Oct 30 22:10:53 2022 -0500
+
+    remove current user from other users list
+
+M	src/screens/Home.js
+
+commit ab8f7c16ddd7401c3efd9d2761c8f71f109f97f5
+Author: derrickrosefan <114096803+derrickrosefan@users.noreply.github.com>
+Date:   Sun Oct 30 22:07:47 2022 -0500
+
+    filtering logic
+
+M	src/screens/Home.js
+M	src/utilities/userProfile.js
+
+commit a460fdcf0065d1d4d5db8e7c0545051eb54b9966
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Sun Oct 30 17:36:08 2022 -0500
+
+    Styled navbar and interests menu
+
+M	src/App.js
+A	src/components/Interests/UserInterests.js
+A	src/components/Navbar/Menubar.js
+M	src/screens/Home.js
+M	src/screens/Login.js
+A	src/styles/navbar.css
+R096	src/screens/Login.css	src/styles/styles.css
+A	src/styles/userInterests.css
+M	src/utilities/userProfile.js
+
+commit 4ddea82d62f73b7f18c77c438d05f9c3de50fa8e
+Author: Ping <pinghe2022@u.northwestern.edu>
+Date:   Sun Oct 30 16:57:50 2022 -0500
+
+    Fixed bug for new user login
+
+M	src/utilities/userProfile.js
+
+commit db0e51253d45df170bc16a23a2a6172634c3a06c
+Author: ZHYangRoger <78511621+ZHYangRoger@users.noreply.github.com>
+Date:   Sun Oct 30 16:48:45 2022 -0500
+
+    finishing-filtering-todo-fixing-newuserlogin
+
+M	src/screens/Home.js
+M	src/utilities/userProfile.js
+
+commit 75ac972b802750250cbff328ad21fd2cad87175a
+Author: 1705820 <KIIT@BT1705820>
+Date:   Sun Oct 30 16:30:47 2022 -0500
+
+    Initiated sort
+
+M	src/components/userCard/userCard.js
+M	src/screens/Home.js
+
+commit c93d209be85b640effd14bf27f7bca1d117c3225
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Sun Oct 30 15:52:27 2022 -0500
+
+    Fixed persistance of interests on Firebase
+
+M	src/components/addInterestModal/addInterestModal.js
+M	src/components/userCard/userCard.js
+M	src/screens/Home.js
+M	src/utilities/userProfile.js
+
+commit ee1a120cb1e29785c380cf8659bcf63d40795a0a
+Author: derrickrosefan <114096803+derrickrosefan@users.noreply.github.com>
+Date:   Sun Oct 30 15:34:57 2022 -0500
+
+    display current user and other user' interests
+
+M	src/components/userCard/userCard.js
+M	src/screens/Home.js
+
+commit f029d8c360e41c51a2431e48795379e82ef21f3b
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Tue Oct 25 22:19:58 2022 -0500
+
+    Styled Login Page
+
+M	src/App.js
+M	src/screens/Home.js
+A	src/screens/Login.css
+M	src/screens/Login.js
+M	src/utilities/userProfile.js
+
+commit 785c39ca25f8ef25118afc2314524d6665c7cc49
+Author: ShaliniR8 <1705820@kiit.ac.in>
+Date:   Tue Oct 25 18:54:20 2022 -0500
+
+    added user cards
+
+A	src/components/userCard/userCard.js
+M	src/screens/Home.js
+
+commit 6a8e4877302719a4193b20e1d35f1e14bd8aac4f
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Tue Oct 25 18:26:03 2022 -0500
+
+    Added interests to users in Firebase
+
+M	src/components/addInterestModal/addInterestModal.js
+
+commit 2160a6b64401943644dbe0194edff8eee542d9f9
+Author: alfenn <52635707+alfenn@users.noreply.github.com>
+Date:   Tue Oct 25 18:03:14 2022 -0500
+
+    add add-interest button and form fields
+
+A	src/components/addInterestModal/addInterestModal.js
+M	src/screens/Home.js
+
+commit 3e9319e59a4b3c18b66997d448fa920a364b38f1
+Author: derrickrosefan <114096803+derrickrosefan@users.noreply.github.com>
+Date:   Tue Oct 25 17:38:50 2022 -0500
+
+    implemented user sign in/out
+
+M	src/App.js
+M	src/screens/Home.js
+A	src/screens/Login.js
+M	src/utilities/userProfile.js
+
+commit 66c5a814a7ae3df91cf8920cc948f94a58a98e8f
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Mon Oct 24 19:13:45 2022 -0500
+
+    Firebase config done
+
+A	.firebase/hosting.YnVpbGQ.cache
+A	.firebaserc
+A	firebase.json
+D	public/favicon.ico
+A	public/favicon.png
+M	public/index.html
+D	src/App.css
+M	src/App.js
+D	src/App.test.js
+D	src/index.css
+M	src/index.js
+D	src/logo.svg
+D	src/reportWebVitals.js
+A	src/screens/Home.js
+D	src/setupTests.js
+A	src/utilities/firebase.js
+A	src/utilities/userProfile.js
+
+commit 11890396b8d25e5dba9ec89c29f400edd645054a
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Mon Oct 24 18:48:23 2022 -0500
+
+    Initial react setup
+
+M	package-lock.json
+M	package.json
+
+commit 72caff8dfbd29d7f73e809f53d4bd25165b8ce26
+Author: Camilo <camilochafloque@gmail.com>
+Date:   Mon Oct 24 18:45:02 2022 -0500
+
+    Initialize project using Create React App
+
+A	.gitignore
+A	README.md
+A	package-lock.json
+A	package.json
+A	public/favicon.ico
+A	public/index.html
+A	public/logo192.png
+A	public/logo512.png
+A	public/manifest.json
+A	public/robots.txt
+A	src/App.css
+A	src/App.js
+A	src/App.test.js
+A	src/index.css
+A	src/index.js
+A	src/logo.svg
+A	src/reportWebVitals.js
+A	src/setupTests.js

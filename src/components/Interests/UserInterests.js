@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge, Button } from "react-bootstrap";
-import AddInterestModal from "../AddInterestModal/AddInterestModal";
+import AddInterestModal from "../AddInterestModal/addInterestModal";
 
 const UserInterests = ({
   currentUserInformation,
@@ -16,12 +16,12 @@ const UserInterests = ({
         <div>
           {currentUserInformation.interests
             ? Object.values(currentUserInformation.interests).map(
-                ({ name }) => (
-                  <Badge className="interests-badges" key={name} bg="info">
-                    {name}
-                  </Badge>
-                )
+              ({ name }) => (
+                <Badge className="interests-badges" key={name} bg="info">
+                  {name}
+                </Badge>
               )
+            )
             : null}
         </div>
         <div>

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { ListGroup, Container } from "react-bootstrap";
 import { useProfile } from "../utilities/userProfile";
 import { useDbData } from "../utilities/firebase";
-import UserCard from "../components/UserCard/UserCard";
+import UserCard from "../components/UserCard/userCard";
 import Menubar from "../components/Navbar/Menubar";
 import UserInterests from "../components/Interests/UserInterests";
 import { stringSimilarity } from "../utilities/calculate";
+import ProfileModal from "../components/ProfileModal/ProfileModal";
 
 const Home = () => {
   const [currentUser, error, isLoading] = useProfile();
@@ -14,6 +15,10 @@ const Home = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const openProfileModal = () => { setIsProfileModalOpen(true) };
+  const closeProfileModal = () => { setIsProfileModalOpen(false) };
 
   if (error || errorUsers)
     return <h1>Error loading users data: {`${error}`}</h1>;
@@ -69,7 +74,8 @@ const Home = () => {
 
   return (
     <div>
-      <Menubar user={currentUser} />
+      <ProfileModal isProfileModalOpen={isProfileModalOpen} closeProfileModal={closeProfileModal} />
+      <Menubar user={currentUser} openProfileModal={openProfileModal} />
       <Container className="container">
         <UserInterests
           currentUserInformation={currentUserInformation}
@@ -85,6 +91,7 @@ const Home = () => {
               return (
                 <ListGroup.Item key={id}>
                   <UserCard
+                    description={user.description}
                     name={user.displayName}
                     interests={
                       user.interests
