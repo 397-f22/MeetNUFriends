@@ -15,29 +15,29 @@ function UserCard({ name, interests, currentUserInterests }) {
           </Row>
         </Container>
 
-        <Card.Text className="mt-1">
-          <div>
-            User description goes here. In the future, each user will have the
-            ability to write a short description about themselves to let other
-            students know more about themselves
-          </div>
-          <div className="user-interests-container">
-            {interests ? (
-              interests.map((interest) => (
-                <Badge
-                  className="user-interests"
-                  key={interest}
-                  pill
-                  bg="primary"
-                >
-                  {interest}
-                </Badge>
-              ))
-            ) : (
-              <p className="user-interests-warning">No interests added yet</p>
-            )}
-          </div>
-        </Card.Text>
+        {/* <Card.Text className="mt-1"> */}
+        <div className="mt-1">
+          User description goes here. In the future, each user will have the
+          ability to write a short description about themselves to let other
+          students know more about themselves
+        </div>
+        <div className="user-interests-container">
+          {interests ? (
+            interests.map((interest) => (
+              <Badge
+                className="user-interests"
+                key={interest}
+                pill
+                bg="primary"
+              >
+                {interest}
+              </Badge>
+            ))
+          ) : (
+            <p className="user-interests-warning">No interests added yet</p>
+          )}
+        </div>
+        {/* </Card.Text> */}
       </Card.Body>
     </Card>
   );

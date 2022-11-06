@@ -7,6 +7,7 @@ const UserInterests = ({
   show,
   handleClose,
   handleShow,
+  allInterests,
 }) => {
   return (
     <div className="mt-4 mb-4">
@@ -29,7 +30,11 @@ const UserInterests = ({
           </Button>
         </div>
       </div>
-      <AddInterestModal show={show} handleClose={handleClose} />
+      <AddInterestModal
+        show={show}
+        handleClose={handleClose}
+        interests={allInterests}
+      />
     </div>
   );
 };
