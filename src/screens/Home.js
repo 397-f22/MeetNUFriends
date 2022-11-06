@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ListGroup, Container } from "react-bootstrap";
 import { useProfile } from "../utilities/userProfile";
 import { useDbData } from "../utilities/firebase";
-import UserCard from "../components/UserCard/userCard";
+import UserCard from "../components/userCard/userCard";
 import Menubar from "../components/Navbar/Menubar";
 import UserInterests from "../components/Interests/UserInterests";
 import { stringSimilarity } from "../utilities/calculate";
@@ -93,6 +93,7 @@ const Home = () => {
                   <UserCard
                     description={user.description}
                     name={user.displayName}
+                    email={user.email}
                     interests={
                       user.interests
                         ? Object.values(user.interests).map(({ name }) => name)

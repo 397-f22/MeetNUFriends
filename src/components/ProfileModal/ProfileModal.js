@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { Button, Modal, Form } from "react-bootstrap";
 import { useProfile } from "../../utilities/userProfile";
 import { useDbUpdate } from "../../utilities/firebase";
-import tagCanvas from "tag-canvas";
 
 const ProfileModal = ({ isProfileModalOpen, closeProfileModal }) => {
     const [user] = useProfile();
@@ -23,11 +22,12 @@ const ProfileModal = ({ isProfileModalOpen, closeProfileModal }) => {
             </Modal.Header>
             <Modal.Body>
                 <Form>
-                    <Form.Label htmlFor="interestName">Description</Form.Label>
+                    <Form.Label htmlFor="description">Description</Form.Label>
                     <Form.Control
                         type="text"
                         id="description"
                         onChange={(e) => setDescription(e.target.value)}
+                        defaultValue={description}
                     />
                     <Form.Text muted>Enter your profile description</Form.Text>
                 </Form>
