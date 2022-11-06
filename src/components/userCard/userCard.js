@@ -1,6 +1,15 @@
 import { Card, Badge, Image, Container, Row, Col } from "react-bootstrap";
 
-function UserCard({ description, name, email, interests, currentUserInterests }) {
+function drawStars(similarity){
+  let sim = Math.round(similarity);
+  let stars = [];
+  for (let i = 0; i < sim; i++){
+    stars.push("⭐️")
+  }
+  return stars;
+}
+
+function UserCard({ description, name, email, interests, similarity }) {
   return (
     <Card>
       <Card.Body>
@@ -14,6 +23,9 @@ function UserCard({ description, name, email, interests, currentUserInterests })
             </Col>
           </Row>
         </Container>
+        <div className="mt-1">
+          Similarity: {drawStars(similarity)}
+        </div>
         <div className="mt-1">
           {description ?? "User has no description"}
         </div>
