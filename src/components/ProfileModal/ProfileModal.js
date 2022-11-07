@@ -22,7 +22,9 @@ const ProfileModal = ({
   const deleteInterest = (id) => {
     delete currentUserInformation.interests[id];
     updateData({
-      ["/users/" + user.uid + "/interests/"]: currentUserInformation.interests,
+      ["/users/" + user.uid + "/interests/"]: currentUserInformation.interests
+        ? currentUserInformation.interests
+        : {},
     });
   };
 
@@ -48,6 +50,7 @@ const ProfileModal = ({
       <Modal.Body>
         <p className="profile-modal-titles">Interests</p>
         {currentUserInformation &&
+          currentUserInformation.interests &&
           Object.entries(currentUserInformation.interests).map(
             ([id, interest]) => (
               <div className="profile-interests-container" key={id}>
