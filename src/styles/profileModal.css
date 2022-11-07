@@ -1,0 +1,25 @@
+.profile-modal-titles {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.profile-interests-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid lightgray;
+}
+
+.profile-modal-save-button {
+  background-color: rgb(78, 42, 132);
+  border: 1px solid rgb(78, 42, 132);
+  color: white;
+}
+
+.profile-modal-save-button:hover {
+  background-color: #b19cd9;
+  border: 1px solid rgb(78, 42, 132);
+  color: black;
+}
