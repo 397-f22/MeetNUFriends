@@ -99,6 +99,7 @@ const Home = () => {
                         ? Object.values(user.interests).map(({ name }) => name)
                         : null
                     }
+                    similarity={similarity}
                   />
                 </ListGroup.Item>
               );
