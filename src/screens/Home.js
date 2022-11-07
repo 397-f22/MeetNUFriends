@@ -7,6 +7,7 @@ import Menubar from "../components/Navbar/Menubar";
 import UserInterests from "../components/Interests/UserInterests";
 import { stringSimilarity } from "../utilities/calculate";
 import ProfileModal from "../components/ProfileModal/ProfileModal";
+import numtoColorHsl from "../utilities/spectrum";
 
 const Home = () => {
   const [currentUser, error, isLoading] = useProfile();
@@ -67,7 +68,9 @@ const Home = () => {
     });
     // sort the list by the similarity
     similarityList.sort((a, b) => b[2] - a[2]);
-    return similarityList;
+    const stepSize = Math.floor(140/similarityList.length)
+    const colorList = numtoColorHsl(stepSize)
+    return similarityList.map((innerList) => [colorList[similarityList.indexOf(innerList)], ...innerList])
   };
 
   // console.log(calculateSimilarity(currentUserInformation, users));
@@ -86,11 +89,12 @@ const Home = () => {
         />
         <ListGroup variant="flush">
           {calculateSimilarity(currentUserInformation, users)
-            .filter(([id, user, similarity]) => user !== currentUserInformation)
-            .map(([id, user, similarity]) => {
+            .filter(([color, id, user, similarity]) => user !== currentUserInformation)
+            .map(([color, id, user, similarity]) => {
               return (
                 <ListGroup.Item key={id}>
                   <UserCard
+                    color = {color}
                     description={user.description}
                     name={user.displayName}
                     email={user.email}
