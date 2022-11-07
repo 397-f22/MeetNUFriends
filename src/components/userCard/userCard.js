@@ -35,7 +35,7 @@ function UserCard({color, description, name, email, interests, similarity }) {
     <Container >
       <Row>
         <div className="my-3">
-          {description ?? <h6 class="text-muted"><i>User has no description</i></h6>}
+          {description ?? <h6 className="text-muted"><i>User has no description</i></h6>}
         </div>
         
         <div className="user-interests-container">

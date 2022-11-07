@@ -47,11 +47,14 @@ const Home = () => {
     const similarityList = [];
     Object.entries(users).forEach(([id, user]) => {
       if (user !== currentUser && user.interests) {
+        console.log(currentUser)
+        console.log(user)
         let similarity = 0;
         Object.entries(user.interests).forEach(([id, interest]) => {
           if (currentUser.interests) {
             Object.entries(currentUser.interests).forEach(
               ([id, currentUserInterest]) => {
+                console.log( `My interest : ${currentUserInterest.name}, other interest : ${interest.name}`)
                 similarity += stringSimilarity(
                   interest.name,
                   currentUserInterest.name
