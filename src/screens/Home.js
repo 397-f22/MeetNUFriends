@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ListGroup, Container } from "react-bootstrap";
 import { useProfile } from "../utilities/userProfile";
 import { useDbData } from "../utilities/firebase";
-import UserCard from "../components/userCard/userCard";
+import UserCard from "../components/UserCard/UserCard";
 import Menubar from "../components/Navbar/Menubar";
 import UserInterests from "../components/Interests/UserInterests";
 import { stringSimilarity } from "../utilities/calculate";
