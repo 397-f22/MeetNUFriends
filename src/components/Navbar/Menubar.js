@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { signOut } from "../../utilities/firebase";
 
