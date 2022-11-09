@@ -17,8 +17,12 @@ const Home = () => {
   const handleShow = () => setShow(true);
 
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-  const openProfileModal = () => { setIsProfileModalOpen(true) };
-  const closeProfileModal = () => { setIsProfileModalOpen(false) };
+  const openProfileModal = () => {
+    setIsProfileModalOpen(true);
+  };
+  const closeProfileModal = () => {
+    setIsProfileModalOpen(false);
+  };
 
   if (error || errorUsers)
     return <h1>Error loading users data: {`${error}`}</h1>;
@@ -74,7 +78,11 @@ const Home = () => {
 
   return (
     <div>
-      <ProfileModal isProfileModalOpen={isProfileModalOpen} closeProfileModal={closeProfileModal} />
+      <ProfileModal
+        isProfileModalOpen={isProfileModalOpen}
+        closeProfileModal={closeProfileModal}
+        currentUserInformation={currentUserInformation}
+      />
       <Menubar user={currentUser} openProfileModal={openProfileModal} />
       <Container className="container">
         <UserInterests

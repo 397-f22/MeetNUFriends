@@ -1,10 +1,10 @@
 import { Card, Badge, Image, Container, Row, Col } from "react-bootstrap";
 
-function drawStars(similarity){
+function drawStars(similarity) {
   let sim = Math.round(similarity);
   let stars = [];
-  for (let i = 0; i < sim; i++){
-    stars.push("⭐️")
+  for (let i = 0; i < sim; i++) {
+    stars.push("⭐️");
   }
   return stars;
 }
@@ -23,23 +23,17 @@ function UserCard({ description, name, email, interests, similarity }) {
             </Col>
           </Row>
         </Container>
-        <div className="mt-1">
-          Similarity: {drawStars(similarity)}
-        </div>
-        <div className="mt-1">
-          {description ?? "User has no description"}
-        </div>
-      <a href={`mailto:${email}`}  style={{textDecoration:"none"}}> {email} </a>
+        <div className="mt-1">Similarity: {drawStars(similarity)}</div>
+        <div className="mt-1">{description ?? "User has no description"}</div>
+        <a href={`mailto:${email}`} style={{ textDecoration: "none" }}>
+          {" "}
+          {email}{" "}
+        </a>
 
         <div className="user-interests-container">
           {interests ? (
-            interests.map((interest) => (
-              <Badge
-                className="user-interests"
-                key={interest}
-                pill
-                bg="primary"
-              >
+            interests.map((interest, id) => (
+              <Badge className="user-interests" key={id} pill bg="primary">
                 {interest}
               </Badge>
             ))

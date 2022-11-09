@@ -35,3 +35,11 @@
     0 8px 32px -8px hsla(0, 0%, 0%, 0.14),
     0 -6px 32px -6px hsla(0, 0%, 0%, 0.02);
 }
+
+.user-interests-description {
+  margin-top: 10px;
+  margin-left: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  color: grey;
+}

@@ -10,6 +10,7 @@ import "./styles/styles.css";
 import "./styles/navbar.css";
 import "./styles/userInterests.css";
 import "./styles/userCard.css";
+import "./styles/profileModal.css";
 
 function App() {
   const [user] = useProfile();

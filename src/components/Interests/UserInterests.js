@@ -16,12 +16,12 @@ const UserInterests = ({
         <div>
           {currentUserInformation.interests
             ? Object.values(currentUserInformation.interests).map(
-              ({ name }) => (
-                <Badge className="interests-badges" key={name} bg="info">
-                  {name}
-                </Badge>
+                ({ name }) => (
+                  <Badge className="interests-badges" key={name} bg="info">
+                    {name}
+                  </Badge>
+                )
               )
-            )
             : null}
         </div>
         <div>
@@ -30,6 +30,11 @@ const UserInterests = ({
           </Button>
         </div>
       </div>
+      {currentUserInformation.description.length > 0 && (
+        <div className="user-interests-description">
+          <p>{currentUserInformation.description}</p>
+        </div>
+      )}
       <AddInterestModal
         show={show}
         handleClose={handleClose}
