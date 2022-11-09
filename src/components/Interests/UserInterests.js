@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge, Button } from "react-bootstrap";
-import AddInterestModal from "../addInterestModal/addInterestModal";
+import AddInterestModal from "../AddInterestModal/AddInterestModal";
 
 const UserInterests = ({
   currentUserInformation,
