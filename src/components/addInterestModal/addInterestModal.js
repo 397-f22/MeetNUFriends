@@ -12,7 +12,6 @@ const AddInterestModal = ({ show, handleClose, interests }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(interest);
     if (interest.length > 0) {
       const data = {
         name: interest,

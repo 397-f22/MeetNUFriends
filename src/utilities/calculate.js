@@ -1,25 +1,26 @@
-export const getBigrams = (string) =>{
-    var s = string.toLowerCase()
-    var v = s.split(''); 
-    for(var i=0; i<v.length; i++){
-        v[i] = s.slice(i, i + 2); 
-    } 
-    return v; 
-} 
+// var distance = require('jaro-winkler');
+
+const tokenize = (string) => {
+    return string.split(/[,.\s]/)
+}
+
+const stem = (string) => {
+    var stemmer = require('porter-stemmer').stemmer
+    return stemmer(string)
+}
 
 export const stringSimilarity = (str1, str2) =>{ 
+    // Lowercase -> tokenize -> stem -> ratio of number of matching stems b/w two strings
     if(str1.length>0 && str2.length>0){ 
-        var pairs1 = getBigrams(str1); 
-        var pairs2 = getBigrams(str2); 
-        var union = pairs1.length + pairs2.length; 
-        var hits = 0; 
-        for(var x=0; x<pairs1.length; x++){ 
-            for(var y=0; y<pairs2.length; y++){ 
-                if(pairs1[x]===pairs2[y])    hits++; 
-            }
-        } 
-        if(hits>0)  return ((2.0 * hits) / union);
+        const stems1 = tokenize(str1.toLocaleLowerCase()).map(word => stem(word))
+        const stems2 = tokenize(str2.toLocaleLowerCase()).map(word => stem(word))
+        const matches = stems1.filter(stem => stems2.includes(stem))
+        return matches.length/(stems1.length > stems2.length? stems1.length: stems2.length)
+
+        
+
     } 
     
+    console.log(0)
     return 0.0 
 }

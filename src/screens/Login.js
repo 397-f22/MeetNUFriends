@@ -4,7 +4,7 @@ import { signInWithGoogle } from "../utilities/firebase";
 import { useProfile } from "../utilities/userProfile";
 
 const Login = () => {
-  const [_, error, isLoading] = useProfile();
+  const [, error, isLoading] = useProfile();
 
   if (error) return <h1>Error loading user: {`${error}`}</h1>;
   if (isLoading) return <h1>Loading user profile</h1>;
