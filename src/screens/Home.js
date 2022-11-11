@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ListGroup, Container } from "react-bootstrap";
 import { useProfile } from "../utilities/userProfile";
 import { useDbData } from "../utilities/firebase";
-import UserCard from "../components/UserCard/UserCard";
+import UserCard from "../components/userCard/userCard";
 import Menubar from "../components/Navbar/Menubar";
 import UserInterests from "../components/Interests/UserInterests";
 import { stringSimilarity } from "../utilities/calculate";
@@ -51,14 +51,16 @@ const Home = () => {
     const similarityList = [];
     Object.entries(users).forEach(([id, user]) => {
       if (user !== currentUser && user.interests) {
-        console.log(currentUser)
-        console.log(user)
+        console.log(currentUser);
+        console.log(user);
         let similarity = 0;
         Object.entries(user.interests).forEach(([id, interest]) => {
           if (currentUser.interests) {
             Object.entries(currentUser.interests).forEach(
               ([id, currentUserInterest]) => {
-                console.log( `My interest : ${currentUserInterest.name}, other interest : ${interest.name}`)
+                console.log(
+                  `My interest : ${currentUserInterest.name}, other interest : ${interest.name}`
+                );
                 similarity += stringSimilarity(
                   interest.name,
                   currentUserInterest.name
@@ -75,9 +77,12 @@ const Home = () => {
     });
     // sort the list by the similarity
     similarityList.sort((a, b) => b[2] - a[2]);
-    const stepSize = Math.floor(140/similarityList.length)
-    const colorList = numtoColorHsl(stepSize)
-    return similarityList.map((innerList) => [colorList[similarityList.indexOf(innerList)], ...innerList])
+    const stepSize = Math.floor(140 / similarityList.length);
+    const colorList = numtoColorHsl(stepSize);
+    return similarityList.map((innerList) => [
+      colorList[similarityList.indexOf(innerList)],
+      ...innerList,
+    ]);
   };
 
   // console.log(calculateSimilarity(currentUserInformation, users));
@@ -100,12 +105,14 @@ const Home = () => {
         />
         <ListGroup variant="flush">
           {calculateSimilarity(currentUserInformation, users)
-            .filter(([color, id, user, similarity]) => user !== currentUserInformation)
+            .filter(
+              ([color, id, user, similarity]) => user !== currentUserInformation
+            )
             .map(([color, id, user, similarity]) => {
               return (
                 <ListGroup.Item key={id}>
                   <UserCard
-                    color = {color}
+                    color={color}
                     description={user.description}
                     name={user.displayName}
                     email={user.email}
