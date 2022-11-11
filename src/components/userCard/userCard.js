@@ -9,34 +9,27 @@ function drawStars(similarity) {
   return stars;
 }
 
-function UserCard({color, description, name, email, interests, similarity }) {
-  
+function UserCard({ color, description, name, email, interests, similarity }) {
   return (
     <Card>
       <Card.Body>
         <Container>
-          <Card.Header style={{backgroundColor:`${color}`}}>
-          <Row bg='light'>
-            <Col xs={3} md={1}>
-              <Image fluid roundedCircle width="50" src="/user.png" />
-            </Col>
-            <Col xs={8} md={10} className="my-auto">
-              <Card.Title className="my-auto mx-auto">{name}</Card.Title>
-              <a href={`mailto:${email}`}  
-                 style={{textDecoration:"none"}}>
-                 {email} 
-              </a>
-              <div className="mt-1">Similarity: {drawStars(similarity)}</div>
-            </Col>
-          </Row>
+          <Card.Header style={{ backgroundColor: `${color}` }}>
+            <Row bg="light">
+              <Col xs={3} md={1}>
+                <Image fluid roundedCircle width="50" src="/user.png" />
+              </Col>
+              <Col xs={8} md={10} className="my-auto">
+                <Card.Title className="my-auto mx-auto">{name}</Card.Title>
+                <a href={`mailto:${email}`} style={{ textDecoration: "none" }}>
+                  {email}
+                </a>
+                <div className="mt-1">Similarity: {drawStars(similarity)}</div>
+              </Col>
+            </Row>
           </Card.Header>
         </Container>
         <div className="mt-1">{description ?? "User has no description"}</div>
-        <a href={`mailto:${email}`} style={{ textDecoration: "none" }}>
-          {" "}
-          {email}{" "}
-        </a>
-
         <div className="user-interests-container">
           {interests ? (
             interests.map((interest, id) => (
@@ -44,12 +37,10 @@ function UserCard({color, description, name, email, interests, similarity }) {
                 {interest}
               </Badge>
             ))
-            ) : (
-              <p className="user-interests-warning">No interests added yet</p>
-              )}
+          ) : (
+            <p className="user-interests-warning">No interests added yet</p>
+          )}
         </div>
-      
-    
       </Card.Body>
     </Card>
   );
