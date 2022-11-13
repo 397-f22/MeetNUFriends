@@ -5,6 +5,7 @@ import { useProfile } from "../../utilities/userProfile";
 import { useDbUpdate } from "../../utilities/firebase";
 import tagCanvas from "tag-canvas";
 
+/* eslint-disable */
 const AddInterestModal = ({ show, handleClose, interests }) => {
   const [user] = useProfile();
   const [updateData] = useDbUpdate("/");
@@ -66,7 +67,6 @@ const AddInterestModal = ({ show, handleClose, interests }) => {
     document.getElementById("interestName").value = s;
     setInterest(s);
   };
-
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
